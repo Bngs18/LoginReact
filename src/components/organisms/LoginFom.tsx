@@ -20,6 +20,6 @@ const LoginForm = () => {
             </div>
         </form >
     )
-}
+} 
 
 export default LoginForm;
