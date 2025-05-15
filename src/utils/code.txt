@@ -1,0 +1,43 @@
+const tryLogin = async () => {
+    try {
+        const response = await fetch("https://api.example.com/login", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ username, password }),
+        });
+        const data = await response.json();
+
+        if (data.success) {
+            navigate("/menu");
+        } else {
+            alert("Credenciales incorrectas");
+        }
+    } catch (error) {
+        console.error("Error en login:", error);
+        alert("Error de conexión");
+    }
+};
+
+
+
+{
+  "compilerOptions": {
+    "target": "ESNext",                          // Permite usar las últimas características de JavaScript
+    "useDefineForClassFields": true,             // Utiliza la sintaxis moderna para campos de clase
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],      // Bibliotecas a incluir
+    "allowJs": false,                            // No permite archivos JavaScript
+    "skipLibCheck": true,                        // Ignora la comprobación de tipos en archivos de librerías
+    "esModuleInterop": true,                     // Permite la interoperabilidad entre módulos CommonJS y ES Modules
+    "allowSyntheticDefaultImports": true,        // Permite importaciones por defecto en módulos sin un default export
+    "strict": true,                              // Activa todas las comprobaciones estrictas
+    "forceConsistentCasingInFileNames": true,    // Forzar el uso coherente de mayúsculas y minúsculas en nombres de archivos
+    "module": "ESNext",                          // Módulo de salida
+    "moduleResolution": "node",                  // Resolución de módulos estilo Node.js
+    "resolveJsonModule": true,                   // Habilita la importación de archivos JSON
+    "isolatedModules": true,                     // Asegura que cada archivo se pueda compilar aisladamente
+    "noEmit": true,                              // No emite archivos de salida en el proceso de compilación
+    "jsx": "react-jsx"                           // Configuración JSX para React 17+ (sintaxis automática)
+  },
+  "include": ["src"],
+  "references": [{ "path": "./tsconfig.node.json" }]
+}
