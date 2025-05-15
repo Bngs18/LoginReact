@@ -1,6 +1,4 @@
-import type { ReactEventHandler } from 'react';
 import '../styles/Button.css';
-import { Link } from 'react-router-dom';
 
 type ButtonProps = {
     className?: string;

@@ -3,14 +3,22 @@ import InputLogin from '../atoms/InputLogin';
 import { ButtonLogin } from '../atoms/ButtonLogin';
 import { useNavigate } from 'react-router-dom';
 import data from '../../utils/data.json';
+import { useState } from 'react';
 
 const LoginForm = () => {
     const navigate = useNavigate();
+    const users = Object.values(data.users)
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
 
     const tryLogin = () => {
-        const users = Object.values(data.users)
-        if()
-        navigate("/page")
+        const foundUser = users.find(
+            (userRecord) => userRecord.user === username && userRecord.password === password
+        );
+
+        if(foundUser){
+            navigate("/page")
+        }
     }
 
     return (
@@ -21,8 +29,15 @@ const LoginForm = () => {
                 <label className='text-white text-[22px] font-serif'>Login</label>
             </div>
             <div className=''>
-                <InputLogin typeInput='text' preview='Username' className='my-[10px]'/>
-                <InputLogin typeInput='password' preview='Password' />
+                <InputLogin 
+                    typeInput='text'
+                    preview='Username'
+                    className='my-[10px]'
+                    onChange={(e) => setUsername(e.target.value)}/>
+                <InputLogin
+                    typeInput='password'
+                    preview='Password'
+                    onChange={(e) => setPassword(e.target.value)}/>
             </div>
             <div className='flex items-start w-[100%]'><label className='text-blue-400 text-[15px] italic underline font-sans'>Forgot your password?</label></div>
             <div className='flex gap-2 my-3 items-start w-[100%]'>
