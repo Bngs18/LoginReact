@@ -17,7 +17,7 @@ const LoginForm = () => {
         );
 
         if (foundUser) {
-            navigate("/page")
+            navigate('/page')
         }
     }
 
