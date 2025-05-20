@@ -18,7 +18,10 @@ const LoginForm = () => {
 
         if (foundUser) {
             navigate('/page')
+            return;
         }
+
+        alert("Incorrect password");
     }
 
     const setData = () => {
@@ -37,10 +40,9 @@ const LoginForm = () => {
         if (e.target === passwordRef.current && (e.key === "ArrowUp")) {
             userNameRef.current?.focus();
         }
-        if (e.target === passwordRef.current && (e.key === "Enter")) {
-
-            tryLogin();
-        }
+        // if (e.target === passwordRef.current && (e.key === "Enter")) {
+        //     tryLogin;
+        // }
     }
 
     return (
@@ -67,7 +69,10 @@ const LoginForm = () => {
                 </div>
                 <div className='flex items-start w-[100%]'><label className='text-blue-400 text-[15px] italic underline font-sans'>Forgot your password?</label></div>
                 <div className='flex gap-2 my-3 items-start w-[100%]'>
-                    <ButtonLogin onClick={tryLogin}>Login</ButtonLogin>
+                    <ButtonLogin onClick={tryLogin}
+                        onKeyDown={(e: React.KeyboardEvent<HTMLButtonElement>) => {
+                            if (e.key === "Enter") tryLogin();
+                        }}>Login</ButtonLogin>
                     <ButtonLogin>Sign up</ButtonLogin>
                 </div>
             </form >
